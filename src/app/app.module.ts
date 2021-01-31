@@ -27,10 +27,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { ProdutosFormComponent } from './pages/produtos-form/produtos-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
+    ProdutosFormComponent,
   ],
   imports: [
     BrowserModule,

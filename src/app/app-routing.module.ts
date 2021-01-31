@@ -24,9 +24,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
+import { ProdutosFormComponent } from './pages/produtos-form/produtos-form.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
+  { path: 'produtos-form', component: ProdutosFormComponent },
   { path: '**', component: AdminComponent },
 ];
 

@@ -1,0 +1,90 @@
+<div class="row  mt-2">
+    <div class="col-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+            </ol>
+        </nav>
+        <h2>Produtos</h2>
+    </div>
+    <div class="col-2">
+        <a routerLink="#" type="button" class="btn btn-secondary float-right mt-2">
+            Adicionar produto
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+
+        <div *ngIf="listProdutos.length === 0" class="alert alert-info" role="alert">
+            Nenhum produto cadastrado.
+        </div>
+
+        <div *ngIf="showSavedMsg" class="alert alert-success" role="alert">
+            Produto salvo com sucesso.
+        </div>
+
+        <div *ngIf="showUpdatedMsg" class="alert alert-info" role="alert">
+            Produto atualizado com sucesso.
+        </div>
+
+        <div *ngIf="showDeleteMsg" class="alert alert-danger" role="alert">
+            Produto excluído com sucesso.
+        </div>
+
+        <table *ngIf="listProdutos.length > 0" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col" width="10%">Apagar</th>
+                    <th scope="col" width="10%">Atualizar</th>
+                    <th scope="col" width="10%">Informações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let objeto of listProdutos">
+                    <td>{{objeto.produto.marca}}</td>
+                    <td>{{objeto.produto.categoria}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger"
+                            (click)="showModal(produto.marca, produto.categoria)">
+                            Excluir
+                        </button>
+                    </td>
+                    <td>
+                        <a type="button" class="btn btn-success"
+                            [routerLink]="['/cliente-form', produto.categoria]">Editar</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" [routerLink]="['/detalhes', produto.categoria]">Detalhes</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">
+                            Excluir {{produto?.categoria}}
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que deseja <b>EXCLUIR</b> o(a) cliente <b>{{produto?.marca}}
+                            ({{produto?.categoria}})</b>?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" (click)="delete()">Confirmar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
