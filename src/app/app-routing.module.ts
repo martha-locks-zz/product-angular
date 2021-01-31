@@ -24,14 +24,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
-import { DescricaoComponent } from './pages/descricao/descricao.component';
+import { DetalhesComponent } from './pages/detalhes/detalhes.component';
 import { ProdutoFormComponent } from './pages/produto-form/produto-form.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'produto-form', component: ProdutoFormComponent },
   { path: 'produto-form/:categoria', component: ProdutoFormComponent },
-  { path: 'descricao/:categoria', component: DescricaoComponent },
+  { path: 'detalhes/:categoria', component: DetalhesComponent },
   { path: '**', component: AdminComponent },
 ];
 

@@ -30,13 +30,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { ProdutoFormComponent } from './pages/produto-form/produto-form.component';
-import { DescricaoComponent } from './pages/descricao/descricao.component';
+import { DetalhesComponent } from './pages/detalhes/detalhes.component';
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
     ProdutoFormComponent,
-    DescricaoComponent
+    DetalhesComponent
   ],
   imports: [
     BrowserModule,

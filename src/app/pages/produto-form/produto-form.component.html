@@ -19,14 +19,8 @@
     <div class="row">
         <div class="col-6">
             <div class="form-group">
-                <label for="marcaProduto">Marca do produto *</label>
-                <input type="text" formControlName="marcaProduto"
-                    [ngClass]="{'border-danger': submitted && produtoForm.controls.marcaProduto.errors}"
-                    class="form-control" id="marcaProduto">
-                <small class="form-text text-danger d-none"
-                    [ngClass]="{'d-block': submitted && produtoForm.controls.marcaProduto.errors}">
-                    Obrigatório
-                </small>
+                <label for="marcaProduto">Marca do produto </label>
+                <input type="text" formControlName="marcaProduto" class="form-control" id="marcaProduto">
             </div>
         </div>
 
