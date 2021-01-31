@@ -21,30 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { TestBed } from '@angular/core/testing';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AdminComponent } from './pages/admin/admin.component';
-import { ProdutoFormComponent } from './pages/produto-form/produto-form.component';
-import { DescricaoComponent } from './pages/descricao/descricao.component';
-@NgModule({
-  declarations: [
-    AppComponent,
-    AdminComponent,
-    ProdutoFormComponent,
-    DescricaoComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+import { ProdutosService } from './produtos.service';
+
+describe('ProdutosService', () => {
+    let service: ProdutosService;
+
+    beforeEach(() => {
+        TestBed.configureTestingModule({});
+        service = TestBed.inject(ProdutosService);
+    });
+
+    it('should be created', () => {
+        expect(service).toBeTruthy();
+    });
+});

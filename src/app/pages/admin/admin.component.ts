@@ -22,6 +22,9 @@
  * THE SOFTWARE.
  */
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProdutosService } from 'src/app/services/produtos.service';
+declare var $: any;
 
 @Component({
   selector: 'app-admin',
@@ -30,9 +33,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  public listProdutos = Array();
+  public produto: any;
+  public showDeleteMsg: boolean | undefined;
+  public showSavedMsg: boolean | undefined;
+  public showUpdatedMsg: boolean | undefined;
+  private categoria: any;
+
+  constructor(
+
+    private produtosService: ProdutosService,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+
+    this.loadProdutos();
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.showSavedMsg = params['saved'];
+      this.showUpdatedMsg = params['updated'];
+    });
+  }
+
+  public showModal(categoria: any, produto: any): void {
+
+    this.categoria = categoria;
+    this.produto = produto;
+
+    this.showDeleteMsg = false;
+    $('#deleteModal').modal('show');
+  }
+
+  public delete(): void {
+
+    if (this.categoria) {
+
+      this.produtosService.deleteProdutoByCategoria(this.categoria);
+
+      this.loadProdutos();
+
+      this.showDeleteMsg = true;
+
+      $('#deleteModal').modal('hide')
+    }
+
+  }
+
+  private loadProdutos(): void {
+    this.listProdutos = this.produtosService.getListProdutos();
   }
 
 }

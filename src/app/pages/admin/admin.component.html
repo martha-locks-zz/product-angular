@@ -8,7 +8,7 @@
         <h2>Produtos</h2>
     </div>
     <div class="col-2">
-        <a routerLink="#" type="button" class="btn btn-secondary float-right mt-2">
+        <a routerLink="/produto-form" type="button" class="btn btn-secondary float-right mt-2">
             Adicionar produto
         </a>
     </div>
@@ -55,10 +55,10 @@
                     </td>
                     <td>
                         <a type="button" class="btn btn-success"
-                            [routerLink]="['/cliente-form', produto.categoria]">Editar</a>
+                            [routerLink]="['/produto-form', produto.categoria]">Editar</a>
                     </td>
                     <td>
-                        <a class="btn btn-primary" [routerLink]="['/detalhes', produto.categoria]">Detalhes</a>
+                        <a class="btn btn-primary" [routerLink]="['/descrição', produto.categoria]">Descrição</a>
                     </td>
                 </tr>
             </tbody>

@@ -1,0 +1,37 @@
+<div class="row  mt-2">
+    <div class="col-10">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/admin">Admin</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Descrição</li>
+            </ol>
+        </nav>
+        <h2>
+            Detalhes {{produto?.marcaProduto}}
+        </h2>
+    </div>
+    <div class="col-2">
+        <a routerLink="/admin" type="button" class="btn btn-secondary float-right mt-2">
+            Voltar
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div *ngIf="!produto" class="alert alert-info" role="alert">
+            Nenhum produto cadastrado com esta categoria.
+        </div>
+    </div>
+    <div class="col-6">
+        <dl>
+            <dt>Marca do produto</dt>
+            <dd>{{produto?.marcaProduto}}</dd>
+
+            <dt>Categoria</dt>
+            <dd>{{produto?.categoria}}</dd>
+
+            <dt>Valor</dt>
+            <dd>{{produto?.valor}}</dd>
+        </dl>
+    </div>
+</div>
