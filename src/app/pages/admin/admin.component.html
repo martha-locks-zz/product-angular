@@ -44,21 +44,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let objeto of listProdutos">
-                    <td>{{objeto.produto.marca}}</td>
-                    <td>{{objeto.produto.categoria}}</td>
+                <tr *ngFor="let produto of listProdutos">
+                    <td>{{produto.detalhes.marca}}</td>
+                    <td>{{produto.categoria}}</td>
                     <td>
                         <button type="button" class="btn btn-danger"
-                            (click)="showModal(produto.marca, produto.categoria)">
+                            (click)="showModal(produto.detalhes.marca, produto.categoria)">
                             Excluir
                         </button>
                     </td>
                     <td>
-                        <a type="button" class="btn btn-success"
-                            [routerLink]="['/produto-form', produto.categoria]">Editar</a>
+                        <a type="button" class="btn btn-success" [routerLink]="['/produto-form', produto.categoria]">
+                            Editar
+                        </a>
                     </td>
                     <td>
-                        <a class="btn btn-primary" [routerLink]="['/descrição', produto.categoria]">Descrição</a>
+                        <a class="btn btn-primary" [routerLink]="['/detalhes', produto.categoria]">
+                            Detalhes
+                        </a>
                     </td>
                 </tr>
             </tbody>

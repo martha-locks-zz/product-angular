@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { ProdutosService } from 'src/app/services/produtos.service';
 
@@ -12,8 +12,9 @@ import { ProdutosService } from 'src/app/services/produtos.service';
 export class ProdutoFormComponent implements OnInit {
 
   public produtoForm = new FormGroup({
-    marcaProduto: new FormControl('', [Validators.required]),
+    marca: new FormControl(''),
     categoria: new FormControl(''),
+    descricao: new FormControl(''),
     valor: new FormControl(''),
   });
 
@@ -50,18 +51,20 @@ export class ProdutoFormComponent implements OnInit {
 
     if (this.produtoForm.valid && !this.showMessageCategoria) {
 
-      const produto = {
-        marcaProduto: this.produtoForm.value.marcaProduto,
-        categoria: this.produtoForm.value.categoria,
+      const detalhes = {
+        marca: this.produtoForm.value.marca,
+        descricao: this.produtoForm.value.descricao,
         valor: this.produtoForm.value.valor,
       };
 
-      const categoria = produto.categoria;
+      const categoria = this.produtoForm.value.categoria;
 
       const novoProduto = {
         categoria: categoria,
-        produto: produto
+        detalhes: detalhes
       };
+
+      console.log(novoProduto);
 
       let navigationExtras: NavigationExtras;
 
@@ -88,8 +91,9 @@ export class ProdutoFormComponent implements OnInit {
 
   private fillForm(produto: any): void {
 
-    this.produtoForm.get('marcaProduto')?.setValue(produto.marcaProduto);
+    this.produtoForm.get('marca')?.setValue(produto.marca);
     this.produtoForm.get('categoria')?.setValue(produto.categoria);
+    this.produtoForm.get('descricao')?.setValue(produto.descricao);
     this.produtoForm.get('valor')?.setValue(produto.valor);
   }
 

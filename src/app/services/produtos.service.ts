@@ -28,23 +28,23 @@ import { Injectable } from '@angular/core';
 })
 export class ProdutosService {
 
-    private readonly LIST_NAME = 'listProdutos';
+    private readonly LIST_CATEGORY = 'listProdutos';
 
     constructor() {
 
-        let listProdutos: any = localStorage.getItem(this.LIST_NAME);
+        let listProdutos: any = localStorage.getItem(this.LIST_CATEGORY);
 
         if (!listProdutos) {
 
             listProdutos = [];
 
-            localStorage.setItem(this.LIST_NAME, JSON.stringify(listProdutos));
+            localStorage.setItem(this.LIST_CATEGORY, JSON.stringify(listProdutos));
         }
     }
 
     public getListProdutos(): any {
 
-        const listProdutos: any = localStorage.getItem(this.LIST_NAME);
+        const listProdutos: any = localStorage.getItem(this.LIST_CATEGORY);
 
         return JSON.parse(listProdutos);
     }
@@ -55,7 +55,7 @@ export class ProdutosService {
 
         listProdutos.push(novoProduto);
 
-        localStorage.setItem(this.LIST_NAME, JSON.stringify(listProdutos));
+        localStorage.setItem(this.LIST_CATEGORY, JSON.stringify(listProdutos));
     }
 
     public getProdutoByCategoria(categoria: string): any {
@@ -69,6 +69,6 @@ export class ProdutosService {
 
         const result = this.getListProdutos().filter((produto: any) => produto.categoria !== categoria);
 
-        localStorage.setItem(this.LIST_NAME, JSON.stringify(result));
+        localStorage.setItem(this.LIST_CATEGORY, JSON.stringify(result));
     }
 }
