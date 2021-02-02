@@ -30,8 +30,8 @@ import { ProdutoFormComponent } from './pages/produto-form/produto-form.componen
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
   { path: 'produto-form', component: ProdutoFormComponent },
-  { path: 'produto-form/:categoria', component: ProdutoFormComponent },
-  { path: 'detalhes/:categoria', component: DetalhesComponent },
+  { path: 'produto-form/:key', component: ProdutoFormComponent },
+  { path: 'detalhes/:key', component: DetalhesComponent },
   { path: '**', component: AdminComponent },
 ];
 

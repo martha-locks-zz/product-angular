@@ -12,6 +12,7 @@ import { ProdutosService } from 'src/app/services/produtos.service';
 export class ProdutoFormComponent implements OnInit {
 
   public produtoForm = new FormGroup({
+    key: new FormControl(''),
     marca: new FormControl(''),
     categoria: new FormControl(''),
     descricao: new FormControl(''),
@@ -31,17 +32,17 @@ export class ProdutoFormComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const categoria: any = this.route.snapshot.paramMap.get('categoria');
+    const key: any = this.route.snapshot.paramMap.get('key');
 
-    const result = this.produtosService.getProdutoByCategoria(categoria);
+    const result = this.produtosService.getProdutoByKey(key);
 
     if (result.length > 0) {
 
-      const categoria = (result[0]).categoria;
+      const produto = result[0].detalhes;
+
+      this.fillForm(key, produto);
 
       this.isUpdating = true;
-
-      this.fillForm(categoria);
     }
   }
 
@@ -52,15 +53,16 @@ export class ProdutoFormComponent implements OnInit {
     if (this.produtoForm.valid && !this.showMessageCategoria) {
 
       const detalhes = {
+        categoria: this.produtoForm.value.categoria,
         marca: this.produtoForm.value.marca,
         descricao: this.produtoForm.value.descricao,
         valor: this.produtoForm.value.valor,
       };
 
-      const categoria = this.produtoForm.value.categoria;
+      const key = Math.floor(Math.random() * Math.floor(999999999));
 
       const novoProduto = {
-        categoria: categoria,
+        key: key,
         detalhes: detalhes
       };
 
@@ -70,7 +72,7 @@ export class ProdutoFormComponent implements OnInit {
 
       if (this.isUpdating) {
 
-        this.produtosService.deleteProdutoByCategoria(categoria);
+        this.produtosService.deleteProdutoByKey(this.produtoForm.value.key);
 
         navigationExtras = {
           queryParams: { 'updated': true }
@@ -89,8 +91,9 @@ export class ProdutoFormComponent implements OnInit {
     }
   }
 
-  private fillForm(produto: any): void {
+  private fillForm(key: number, produto: any): void {
 
+    this.produtoForm.get('key')?.setValue(key);
     this.produtoForm.get('marca')?.setValue(produto.marca);
     this.produtoForm.get('categoria')?.setValue(produto.categoria);
     this.produtoForm.get('descricao')?.setValue(produto.descricao);

@@ -58,16 +58,16 @@ export class ProdutosService {
         localStorage.setItem(this.LIST_CATEGORY, JSON.stringify(listProdutos));
     }
 
-    public getProdutoByCategoria(categoria: string): any {
+    public getProdutoByKey(key: number): any {
 
-        const result = this.getListProdutos().filter((produto: any) => produto.categoria === categoria);
+        const result = this.getListProdutos().filter((produto: any) => produto.key == key);
 
         return result;
     }
 
-    public deleteProdutoByCategoria(categoria: string): void {
+    public deleteProdutoByKey(key: number): void {
 
-        const result = this.getListProdutos().filter((produto: any) => produto.categoria !== categoria);
+        const result = this.getListProdutos().filter((produto: any) => produto.key != key);
 
         localStorage.setItem(this.LIST_CATEGORY, JSON.stringify(result));
     }

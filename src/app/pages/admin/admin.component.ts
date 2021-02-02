@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
   public showDeleteMsg: boolean | undefined;
   public showSavedMsg: boolean | undefined;
   public showUpdatedMsg: boolean | undefined;
-  private categoria: any;
+  private key: number | undefined;
 
   constructor(
 
@@ -55,9 +55,9 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  public showModal(categoria: any, produto: any): void {
+  public showModal(key: number, produto: any): void {
 
-    this.categoria = categoria;
+    this.key = key;
     this.produto = produto;
 
     this.showDeleteMsg = false;
@@ -66,9 +66,9 @@ export class AdminComponent implements OnInit {
 
   public delete(): void {
 
-    if (this.categoria) {
+    if (this.key) {
 
-      this.produtosService.deleteProdutoByCategoria(this.categoria);
+      this.produtosService.deleteProdutoByKey(this.key);
 
       this.loadProdutos();
 
