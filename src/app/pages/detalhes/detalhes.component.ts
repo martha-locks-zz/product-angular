@@ -24,7 +24,10 @@ export class DetalhesComponent implements OnInit {
 
     if (result.length > 0) {
 
-      this.produto.key = (result[0]).produto.key;
+      this.produto = result[0];
+
+      console.log(this.produto);
+
     }
   }
 

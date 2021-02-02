@@ -7,7 +7,7 @@
             </ol>
         </nav>
         <h2>
-            Descrição {{produto?.marca}}
+            Descrição {{produto?.detalhes.marca}}
         </h2>
     </div>
     <div class="col-2">
@@ -25,13 +25,13 @@
     <div class="col-6">
         <dl>
             <dt>Marca do produto</dt>
-            <dd>{{produto?.marca}}</dd>
+            <dd>{{produto?.detalhes.marca}}</dd>
 
             <dt>Categoria</dt>
-            <dd>{{produto?.categoria}}</dd>
+            <dd>{{produto?.detalhes.categoria}}</dd>
 
             <dt>Valor</dt>
-            <dd>{{produto?.valor}}</dd>
+            <dd>{{produto?.detalhes.valor}}</dd>
         </dl>
     </div>
 </div>
