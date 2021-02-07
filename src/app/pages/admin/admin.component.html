@@ -48,7 +48,7 @@
                     <td>{{produto.detalhes.marca}}</td>
                     <td>{{produto.detalhes.categoria}}</td>
                     <td>
-                        <button type="button" class="btn btn-danger" (click)="showModal(produto.key)">
+                        <button type="button" class="btn btn-danger" (click)="showModal(produto.key, produto.detalhes)">
                             Excluir
                         </button>
                     </td>
